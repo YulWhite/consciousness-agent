@@ -17,11 +17,33 @@
 需要 Python 3.9+，没有第三方依赖。
 
 ```powershell
-copy config.example.json config.json    # 然后填 cortex.api_key，或设环境变量 DEEPSEEK_API_KEY
+copy config.example.json config.json
 python main.py                          # Windows 也可以直接双击 start.bat
 ```
 
 第一次运行是她的出生。之后每次启动，她都接着上次的状态往下过（情绪和精力按离线时间衰减，记忆和自我认知完整保留）。
+
+### API Key 填在哪
+
+打开 `config.json`，找 `"cortex"` 这一段：
+
+```json
+"cortex": {
+  "api_base": "https://api.deepseek.com",
+  "api_key": "",
+  "model": "deepseek-chat"
+}
+```
+
+- `api_key`：密钥填这里。留空就自动读环境变量 `DEEPSEEK_API_KEY`。
+- `api_base`：用哪家的 API 就填哪家的地址。DeepSeek 官方是 `https://api.deepseek.com`；
+  阿里云百炼网关（`https://dashscope.aliyuncs.com/compatible-mode/v1`）、Moonshot
+  （`https://api.moonshot.cn/v1`）、本地 Ollama（`http://127.0.0.1:11434/v1`）都可以，
+  只要接口是 OpenAI 兼容的。
+- `model`：模型名，比如 `deepseek-chat`、`deepseek-v4.1-flash`、`kimi-k2.7-code`。
+
+省事的办法：用 `python tools\wire_brain.py`（见下一节），它会自动从本机的凭据库或
+环境变量里取 key，不用手填，也能直接挑模型。
 
 操作命令：
 
