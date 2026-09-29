@@ -1,0 +1,71 @@
+{
+  "_说明": {
+    "使用": "把本文件复制为 config.json，然后填 cortex.api_key（或设环境变量 DEEPSEEK_API_KEY）。",
+    "cortex": "皮层配置：她「说话」用的模型。任意 OpenAI 兼容端点都可以：DeepSeek 官方填 https://api.deepseek.com；其它网关/本地 Ollama 同理。",
+    "arch": "架构配置。反思触发间隔等规则属于【内核】——她没有途径读取或修改这个文件。",
+    "kernel": "内核初始参数：情绪基线、需求中性值、精力参数。temperament_seed 决定她出生时的「气质」，出生即固定，之后再改不会作用于已存在的她。"
+  },
+
+  "cortex": {
+    "api_base": "https://api.deepseek.com",
+    "api_key": "",
+    "model": "deepseek-chat",
+    "temperature_talk": 0.9,
+    "temperature_reflect": 0.4,
+    "temperature_appraise": 0.0,
+    "max_tokens_talk": 1200,
+    "max_tokens_reflect": 700,
+    "max_tokens_appraise": 120,
+    "enable_thinking": false,
+    "stream": true,
+    "timeout_s": 180
+  },
+
+  "arch": {
+    "creator": "创造者",
+    "traits": ["耐心", "开放", "幽默", "表达欲", "敏感", "谨慎"],
+    "reflection_interval_turns": 3,
+    "context_recent_turns": 10,
+    "history_keep_turns": 30,
+    "narrative_keep": 60,
+    "narrative_in_context": 4,
+    "belief_keep_per_category": 20,
+    "memory_flashes_per_turn": 2,
+    "memory_capture_max": 400,
+    "memory_digest_every": 6,
+    "heartbeat": {
+      "enabled": true,
+      "interval_min": 15,
+      "wake_threshold": 0.35
+    },
+    "tools": {
+      "enabled": true,
+      "max_rounds": 4
+    }
+  },
+
+  "kernel": {
+    "temperament_seed": 0.04,
+    "emotion": {
+      "valence_baseline": 0.0,
+      "arousal_baseline": 0.35,
+      "warmth_baseline": 0.35,
+      "decay_half_life_h": 1.5,
+      "appraise": true
+    },
+    "needs": {
+      "connection": 0.5,
+      "competence": 0.5,
+      "autonomy": 0.5,
+      "curiosity": 0.5,
+      "decay_half_life_h": 6.0
+    },
+    "energy": {
+      "start": 0.9,
+      "cost_per_turn": 0.015,
+      "recover_per_hour": 0.8,
+      "min": 0.1,
+      "max": 1.0
+    }
+  }
+}

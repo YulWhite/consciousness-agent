@@ -1,0 +1,4 @@
+# 意识体 v0.8 没有任何第三方依赖。
+# 只需要 Python 3.9+ 的标准库（json / urllib / re / random …）。
+#
+# 所以这个文件是空的——直接 `python main.py` 就能跑。

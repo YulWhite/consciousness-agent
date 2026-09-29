@@ -1,0 +1,20 @@
+# ===== 本地私密文件，绝不上传 =====
+# 运行配置（含 API Key）
+config.json
+
+# 她的状态：对话记录 / 自我模型 / 长期记忆（含创造者的私人信息）
+data/
+
+# 本地封存备份（含出厂 config.json 的副本）
+backup/
+
+# ===== 环境垃圾 =====
+__pycache__/
+*.pyc
+*.pyo
+.birth_rehearsal/
+.vscode/
+.idea/
+
+# 日志
+*.log

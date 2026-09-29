@@ -1,0 +1,7 @@
+# Windows 批处理保持 CRLF；其余文本文件统一 LF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.py  text eol=lf
+*.md  text eol=lf
+*.json text eol=lf
+*.txt text eol=lf
